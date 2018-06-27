@@ -25,7 +25,20 @@ rl.question('Welcome to tingCLI, do you want to create random array before sort?
             });
             break;
         default:
-            console.log('Now you can input the sort name and try.')
+            rl.question('Please input a array, number sperate by comma(1,2,3):  ', (input)=> {
+                input = input.split(',');
+                input.forEach((item, index, arr)=>{
+                    arr[index] = parseInt(item, 10);
+                })
+                if (Object.prototype.toString.call(input).indexOf('Array') >= 0) {
+                    rd = input;
+                    console.log('Receive an array!');
+                    rl.prompt();
+                } else {
+                    console.log('Oh! Have fun!');
+                    rl.prompt();
+                }
+            })
             rl.prompt();
             break;
     }
@@ -35,9 +48,28 @@ rl.question('Welcome to tingCLI, do you want to create random array before sort?
 
 rl.on('line', (line) => {
     switch (line.trim()) {
+        case 'rd': 
+            console.log(rd);
+            break;
         case 'bubble':
             const bubbleSort  = require('../sort/Bubble_Sort.js');
             console.log(bubbleSort(rd));
+            break;
+        case 'selection':
+            const selectionSort  = require('../sort/Selection_Sort.js');
+            console.log(selectionSort(rd));
+            break;
+        case 'insertion':
+            const insertionSort  = require('../sort/Insertion_Sort.js');
+            console.log(insertionSort(rd));
+            break;
+        case 'shell':
+            const shellSort  = require('../sort/Shell_Sort.js');
+            console.log(shellSort(rd));
+            break;
+        case 'merge':
+            const mergeSort  = require('../sort/Merge_Sort.js');
+            console.log(mergeSort(rd));
             break;
         case 'rfRd':
             rd = randomArr(range);
