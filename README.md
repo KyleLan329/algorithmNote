@@ -1,2 +1,1 @@
-# algorithmNote
-算法题目相关
+## 排序算法
