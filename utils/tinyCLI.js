@@ -80,6 +80,25 @@ function CLI_Init() {
                 const quick2Sort = require('../sort/Quick_Sort2.js');
                 console.log(quick2Sort(rd));
                 break;
+            case 'heap':
+                const heapSort = require('../sort/Heap_Sort.js');
+                console.log(heapSort(rd));
+                break;
+            case 'counting':
+                const countingSort = require('../sort/Counting_Sort.js');
+                console.log(countingSort(rd));
+                break;
+            case 'bucket':
+                rl.question('Input a bucket size?', (input) => {
+                   const bucketSort = require('../sort/Bucket_Sort.js');
+                   if (typeof(input) == 'number') {
+                    console.log(bucketSort(rd, input));
+                   } else {
+                    console.log(bucketSort(rd));
+                   }
+                   rl.prompt();
+                });
+                break;
             case 'rfRd':
                 rd = randomArr(range);
                 console.log(rd);

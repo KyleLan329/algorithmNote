@@ -2,7 +2,7 @@
 const swap = require('../utils/swap.js');
 
 function Quick_Sort2(arr, leftIndex, rightIndex) {
-    let newArr = leftIndex === undefined? arr : [...arr];
+    let newArr = leftIndex !== undefined? arr : [...arr];
 
     leftIndex = leftIndex !== undefined ? leftIndex : 0;
     rightIndex = rightIndex !== undefined ? rightIndex : newArr.length - 1;
