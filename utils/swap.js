@@ -1,8 +1,7 @@
-function swap(pre, next) {
-    let temp = pre;
-    pre = next;
-    next = temp; 
-    return [pre, next]
+function swap(arr, pre, next) {
+    let temp = arr[pre];
+    arr[pre] = arr[next];
+    arr[next] = temp; 
 }
 
 module.exports = swap;

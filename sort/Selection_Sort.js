@@ -12,7 +12,7 @@ function Selection_Sort(arr) {
             }
         }
         if (minIndex != i) {
-            [newArr[i],newArr[minIndex]] = swap(newArr[i],newArr[minIndex]);
+            swap(newArr, i, minIndex);
         }
     }
     return newArr;
