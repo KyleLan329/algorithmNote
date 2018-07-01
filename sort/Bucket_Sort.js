@@ -13,18 +13,27 @@ function Bucket_Sort(arr,bucketSize) {
         }
     });
 
-    const DEFAULT_BUCKET_SIZE = 5;
+    const DEFAULT_BUCKET_SIZE = 100;
     let size = bucketSize || DEFAULT_BUCKET_SIZE;
-    let bucket_num = Math.floor((maxValue - minValue)/size);
+    let bucket_num = Math.floor((maxValue - minValue)/size) + 1;
     console.log(bucket_num);
-    const bucket = Array(bucket_num).fill([]);
-     
-    newArr.forEach((item, index, arr) => {
-        console.log(Math.floor((item - minValue)/ bucket_num));
-        bucket[Math.floor((item - minValue)/bucket_num)].push(item);
-    });
+    const bucket =new Array(bucket_num);
+    // bucket.fill([]);
+    
+    for(let i=0; i<bucket_num; i++) {
+        bucket[i] = [];
+    }
 
     console.log(bucket);
+     
+    for (let i = 0; i < newArr.length; i++) {
+        let bucktIndex = Math.floor((newArr[i] - minValue) / size) ;
+        console.log(newArr[i] + ' / ' + size + ' = ' + bucktIndex);
+        console.log(bucket[bucktIndex]);
+        bucket[bucktIndex].push(newArr[i]);
+        console.log(i, bucket);
+    }
+
 
     newArr = [];
 
