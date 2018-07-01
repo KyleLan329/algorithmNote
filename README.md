@@ -21,3 +21,5 @@ node src/tinyCLI.js
 [快速排序(不开辟新空间)](https://github.com/KyleLan329/algorithmNote/blob/master/sort/Quick_Sort2.js)
 
 [堆排序](https://github.com/KyleLan329/algorithmNote/blob/master/sort/Heap_Sort.js)
+
+[桶排序](https://github.com/KyleLan329/algorithmNote/blob/master/sort/Bucket_Sort.js)
