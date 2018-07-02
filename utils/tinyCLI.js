@@ -88,6 +88,10 @@ function CLI_Init() {
                 const countingSort = require('../sort/Counting_Sort.js');
                 console.log(countingSort(rd));
                 break;
+            case 'radix':
+                const radixSort = require('../sort/Radix_Sort.js');
+                console.log(radixSort(rd));
+                break;
             case 'bucket':
                 rl.question('Input a bucket size?', (input) => {
                    const bucketSort = require('../sort/Bucket_Sort.js');
