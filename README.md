@@ -25,3 +25,7 @@ node src/tinyCLI.js
 [桶排序](https://github.com/KyleLan329/algorithmNote/blob/master/sort/Bucket_Sort.js)
 
 [基数排序](https://github.com/KyleLan329/algorithmNote/blob/master/sort/Radix_Sort.js)
+
+## 数据结构
+
+[链表](https://github.com/KyleLan329/algorithmNote/blob/master/dataStructure/LinkList/LinkList.js)
