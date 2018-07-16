@@ -1,7 +1,8 @@
-import LinkListNode from './LinkListNode';
+const LinkListNode = require('./LinkListNode');
 
-export default class LinkList extends LinkListNode {
+class LinkList extends LinkListNode {
     constructor() {
+        super();
         this.head = null;
         this.tail = null;
     }
@@ -13,7 +14,7 @@ export default class LinkList extends LinkListNode {
         if (!this.tail) {
             this.tail = newNode;
         }
-        return;
+        return this;
     }
 
     append(value) {
@@ -31,7 +32,115 @@ export default class LinkList extends LinkListNode {
         return this;
     }
 
-    find(value) {
+    delete(value) {
+        if (!this.head) {
+            return null;
+        }
+
+        let deleteNode = null;
+
+        while (this.head && this.head.value == value) {
+            deleteNode = this.head;
+            this.head = this.head.next;
+        }
+
+        let currentNode = this.head;
+        if (currentNode !== null) {
+            while(currentNode.next) {
+                if (currentNode.next.value == value) {
+                    deleteNode = currentNode.next;
+                    currentNode.next = currentNode.next.next;
+                } else {
+                    currentNode = currentNode.next;
+                }
+            }
+        }
         
+
+        if (this.tail.value == value) {
+            this.tail = currentNode;
+        }
+
+        return deleteNode;
     }
+
+    find({value = undefined, callback = undefined}) {
+        if (!this.head) {
+            return null;
+        }
+
+        let currentNode = this.head;
+
+        while(currentNode) {
+            if (callback && callback(currentNode.value)) {
+                return currentNode;
+            }
+
+            if (value !== undefined && currentNode.value == value){
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+
+    deleteTail() {
+        if (this.head == this.tail) {
+            const deleteTail = this.head;
+            this.head = null;
+            this.tail = null;
+
+            return deleteTail;
+        }
+
+        const deleteTail = this.tail;
+
+        let currentNode = this.head;
+        while(currentNode.next) {
+            if (!currentNode.next.next) {
+                currentNode.next = null;
+            } else {
+                currentNode = currentNode.next;
+            }
+        }
+
+        this.tail = currentNode;
+        return deleteTail;
+    }
+
+    deleteHead() {
+        if (!this.head) {
+            return null;
+        }
+
+        const deleteHead = this.head;
+
+        if (this.head.next) {
+            this.head = this.head.next;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return deleteHead;
+    }
+
+    toArray() {
+        const nodeList = [];
+
+        let currentNode = this.head;
+
+        while(currentNode) {
+            nodeList.push(currentNode.value);
+            currentNode = currentNode.next;
+        }
+
+        return nodeList;
+    }
+
+    toString(callback) {
+        return this.toArray().map(node => node.toString(callback).toString())
+    }
+
 }
+
+module.exports = LinkList;

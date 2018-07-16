@@ -1,4 +1,4 @@
-export default class LinkListNode {
+class LinkListNode {
     constructor(value, next = null) {
         this.value = value;
         this.next = next;
@@ -8,3 +8,5 @@ export default class LinkListNode {
         return callbackFn? callbackFn(this.value): `${this.value}`;
     }
 }
+
+module.exports = LinkListNode;
